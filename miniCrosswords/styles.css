@@ -1,0 +1,109 @@
+h1 {
+    font-family: "nyt-karnakcondensed";
+}
+
+body {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center items horizontally */
+    height: 100vh; /* Full viewport height */
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    width: 100%; /* Full width for the header */
+    text-align: center; /* Center text in header */
+    margin-bottom: 10px; /* Space below header */
+}
+
+.button-container {
+    text-align: right; /* Align button to the right */
+    margin-top: 5px; /* Space above the button */
+    padding: 0 150px; /* Optional padding for aesthetics */
+}
+
+.container {
+    display: flex; /* Flexbox for crossword and clues */
+    align-items: flex-start; /* Align items at the top */
+    justify-content: center; /* Center the container content horizontally */
+    width: 100%; /* Ensure container takes full width */
+}
+
+.crossword {
+    display: grid;
+    grid-template-columns: repeat(21, 30px);
+    grid-template-rows: repeat(21, 30px);
+    gap: 1px;
+}
+.cell {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    border: 1px solid #ccc;
+}
+.letter {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-weight: bold;
+    font-size: 14px;
+}
+.number {
+    position: absolute;
+    top: 2px; /* Adjust as needed */
+    left: 2px; /* Adjust as needed */
+    color: black; /* Change color to black */
+    font-weight: bold;
+    font-size: 9px; /* Size can be adjusted */
+}
+.black-cell {
+    background-color: black;
+}
+
+/* for the clues */
+.clues {
+    display: flex;
+    flex-direction: column; /* Keep clues in a column layout */
+    align-items: flex-end; /* Align to the right */
+    margin-left: 20px; /* Space between board and clues */
+}
+h3 {
+    margin: 0 0 10px 0; /* Margin for the headers */
+}
+ul {
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0; /* Remove padding */
+}
+li {
+    margin: 5px 0; /* Space between clues */
+}
+
+.correct {
+    color: #2860d8;
+    font-weight: bold;
+}
+
+.wrong {
+    text-decoration: line-through; /* Optional for strikethrough */
+    color: rgb(212, 69, 69); /* Change text color to red */
+}
+
+#checkButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: 1px solid;
+    border-color: #000;
+    border-radius: 32px;
+    background-color: #fff; /* Blue button */
+    color: black; /* White text */
+    transition: background-color 0.3s;
+}
+
+.input-cell {
+    height: 100%;
+}
