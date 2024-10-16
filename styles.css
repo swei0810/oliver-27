@@ -1,0 +1,132 @@
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f8f9fa; /* Light background */
+}
+
+.header {
+    width: 100%; /* Full width for the header */
+    text-align: center; /* Center text in header */
+    margin-bottom: 10px; /* Space below header */
+}
+
+h1 {
+    color: #333; /* Darker text for the title */
+    margin: 20px 0;
+    font-family: "nyt-karnakcondensed";
+}
+
+.tile.shake {
+    animation: shake 0.5s ease forwards;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    width: 100%; /* Ensure full width */
+    max-width: 450px; /* Set max-width */
+    margin-right: 50px;
+}
+
+#solved-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%; /* Ensure full width */
+    max-width: 450px; /* Match the max-width of the game board */
+    color: #000;
+}
+
+.solved-group {
+    width: 100%; /* Ensure it takes full width */
+    padding: 32px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #fff; 
+    text-align: center; 
+    margin-bottom: 20px; /* Space below each solved group */
+}
+
+
+
+.tile {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #efefe6; /* Light grey for tiles */
+    font-size: 1rem; /* Slightly larger font */
+    font-weight: bold;
+    color: #333; /* Darker text color for readability */
+    cursor: pointer;
+    border: 1px solid #ced4da; /* Light border for tiles */
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.tile.selected {
+    background-color: #5a594e; /* Greyed out for selected tiles */
+    transform: scale(1.05); /* Slight scaling effect */
+    color: #fff; /* White text for selected tiles */
+
+}
+
+.tile:hover {
+    background-color: #dee2e6; /* Hover effect for tiles */
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between; /* This aligns buttons to the edges */
+    margin-top: 20px; /* Add margin to the container */
+}
+
+#shuffle {
+    margin-right: 20px; /* Space between the buttons */
+}
+
+#submit, #shuffle {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: 1px solid;
+    border-color: #000;
+    border-radius: 32px;
+    background-color: #fff; /* Blue button */
+    color: black; /* White text */
+    transition: background-color 0.3s;
+}
+
+#submit:hover, #shuffle:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+#message-banner {
+    background-color: #f7da21; /* Yellow banner */
+    color: #000;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    width: 100%;
+    max-width: 450px;
+    margin-top: 10px;
+    display: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
