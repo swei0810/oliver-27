@@ -13,7 +13,7 @@ const grid = [
     ['!', 'A', '!', '!', '!', '!', '!', 'N', '!', '!', 'T', 'O', 'O', 'T', 'S', 'I', 'E', '!', '!', '!', '!'],
     ['!', 'T', '!', '!', '!', '!', '!', 'B', '!', '!', 'J', '!', 'N', '!', '!', 'N', '!', '!', '!', '!', '!'],
     ['P', 'I', 'Z', 'Z', 'A', 'P', 'I', 'E', '!', '!', 'E', '!', '!', '!', '!', 'G', 'O', 'L', 'F', '!', '!'],
-    ['!', 'N', '!', '!', '!', '!', '!', 'R', '!', '!', 'S', '!', '!', '!', '!', 'S', '!', '!', '!', '!', '!'],
+    ['!', 'N', '!', '!', '!', '!', '!', 'R', '!', '!', 'S', 'E', 'X', '!', '!', 'S', '!', '!', '!', '!', '!'],
     ['!', '!', '!', '!', '!', '!', '!', 'O', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!'],
     ['!', 'F', 'R', 'I', 'Z', 'Z', 'A', 'N', 'T', 'E', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!'],
     ['!', '!', '!', 'K', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!'],
@@ -36,7 +36,7 @@ const clueNumber = [
     ['!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '13', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!'],
     ['!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!'],
     ['14', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '15', '!', '!', '!', '!', '!'],
-    ['!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!'],
+    ['!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '17', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!'],
     ['!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!'],
     ['!', '16', '!', '17', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!'],
     ['!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!', '!'],
@@ -120,6 +120,43 @@ function moveToNextCell(currentCell) {
 // Check answers function
 document.getElementById('checkButton').addEventListener('click', checkAnswers);
 
+// function checkAnswers() {
+//     let allCorrect = true;
+
+//     // Loop through the grid structure
+//     for (let row = 0; row < grid.length; row++) {
+//         for (let col = 0; col < grid[row].length; col++) {
+//             const correctAnswer = grid[row][col];
+
+//             // Proceed only if the cell is not a black cell
+//             if (correctAnswer !== '!') {
+//                 const userAnswer = inputCells[row][col].textContent.trim().toUpperCase();
+
+//                 console.log(`Row: ${row}, Col: ${col}, Correct Answer: ${correctAnswer}, User Answer: ${userAnswer}`);
+
+//                 // Clear previous styles
+//                 inputCells[row][col].classList.remove('wrong', 'correct');
+
+//                 if (userAnswer === correctAnswer) {
+//                     inputCells[row][col].classList.add('correct');
+//                     inputCells[row][col].contentEditable = 'false'; // Prevent further editing
+//                 } else if (userAnswer !== '') {
+//                     inputCells[row][col].classList.add('wrong');
+//                     allCorrect = false; // Mark as incorrect if any answer is wrong
+//                 }
+//             }
+//         }
+//     }
+
+//     // Display congratulations if all answers are correct
+//     if (allCorrect) {
+//         setTimeout(() => {
+//             alert("Congrats on finishing the puzzle! Crosswords will continue to grow!");
+//         }, 1500); 
+//     }
+// }
+
+
 function checkAnswers() {
     let allCorrect = true;
 
@@ -140,15 +177,22 @@ function checkAnswers() {
                 if (userAnswer === correctAnswer) {
                     inputCells[row][col].classList.add('correct');
                     inputCells[row][col].contentEditable = 'false'; // Prevent further editing
-                } else if (userAnswer !== '') {
-                    inputCells[row][col].classList.add('wrong');
-                    allCorrect = false; // Mark as incorrect if any answer is wrong
+                } else {
+                    // If the user's answer is incorrect, mark it as wrong
+                    if (userAnswer !== '') {
+                        inputCells[row][col].classList.add('wrong');
+                        allCorrect = false; // Mark as incorrect if any answer is wrong
+                    }
+                    // If the user's answer is empty, also mark allCorrect as false
+                    if (userAnswer === '') {
+                        allCorrect = false;
+                    }
                 }
             }
         }
     }
 
-    // Display congratulations if all answers are correct
+    // Only display the congratulations message if all answers are correct and filled
     if (allCorrect) {
         setTimeout(() => {
             alert("Congrats on finishing the puzzle! Crosswords will continue to grow!");
